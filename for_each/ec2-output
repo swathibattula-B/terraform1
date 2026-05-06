@@ -1,4 +1,4 @@
-  {
+   {
   "cart" = {
     "ami" = "ami-0220d79f3f480ecf5"
     "arn" = "arn:aws:ec2:us-east-1:357365535052:instance/i-0b8f4921097db3581"
@@ -396,3 +396,5 @@
     ])
   }
 }
+
+  

@@ -1,13 +1,9 @@
 resource "aws_instance" "example" {
-  for_each = toset(var.instances)
-  ami           = "ami-0220d79f3f480ecf5"
-  instance_type = "t3.micro"
+  ami           = local.ami_id
+  instance_type = local.instance_type
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
 
-  tags = {
-    Name = each.key
-    project = "roboshop"
-  }
+  tags = local.common_tags
 }
 
 resource "aws_security_group" "allow_tls" {
@@ -31,7 +27,5 @@ resource "aws_security_group" "allow_tls" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
-  tags = {
-    Name = "allow_tls_terraform"
-  }
+  tags = var.sg_tags
 }
